@@ -1,0 +1,82 @@
+:root {
+    --background: #e89d93;
+    --background-body: #b0e0e6;
+    --font: #454547;
+    --buttons: #dbdbdd;
+    --primary: #eec71a;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--font);
+    background-color: var(--background-body);
+}
+
+#container {
+    grid-column: 2 / 3;
+    background-color: var(--background);
+
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+button{
+    border: none;
+    outline: none;
+    background-color: var(--buttons);
+    height: 3em;
+    font-size: 1.3em;
+}
+
+button:hover {
+    filter: brightness(90%);
+}
+
+#instructions {
+    grid-column: 2 / 3;
+}
+
+#controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#play {
+    grid-column: 1 / 2;
+}
+
+#pause {
+    grid-column: 2 / 3;
+}
+
+#stop {
+    grid-column: 3 / 4;
+}
+
+#refresh {
+    grid-column: 4 / 5;
+}
+
+#display {
+    display: grid;
+    grid-template-columns: 5fr 1fr 5fr;
+    padding: 1em 0em;
+    font-size: 3em;
+}
+
+#minutes {
+    grid-column: 1 / 2;
+    text-align: right;
+}
+
+#colon {
+    grid-column: 2 / 3;
+}
+
+#seconds {
+    grid-column: 3 / 4;
+    text-align: left;
+}
