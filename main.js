@@ -7,16 +7,13 @@ const refreshButton = document.querySelector("#refresh");
 const decreaseSessionMinutes    = document.querySelector("#session-decrease");
 const sessionMinutes            = document.querySelector("#session-minutes");
 const increaseSessionMinutes    = document.querySelector("#session-increase");
-
 const decreaseBreakMinutes      = document.querySelector("#break-decrease");
 const breakMinutes              = document.querySelector("#break-minutes");
 const increaseBreakMinutes      = document.querySelector("#break-increase");
 
 const minutesDom = document.querySelector("#minutes");
 const secondsDom = document.querySelector("#seconds");
-
 const pauseDom = document.querySelector("#pause-message");
-
 const sound = document.querySelector("#meditation-bowl");
 
 
@@ -104,6 +101,8 @@ increaseBreakMinutes.addEventListener("click", () => {
 
 // Functions
 function countdown(){
+    setTitle();
+
     // Countdown finished
     if (min === 0 && sec === 0){
         sound.play();
@@ -161,4 +160,8 @@ function increase(dom){
 function setDisplay(targetDom, settingDom){
     formatTime(settingDom.textContent, targetDom);
     min = settingDom.textContent;
+}
+
+function setTitle(){
+    document.title = `${minutesDom.textContent}:${secondsDom.textContent} - ${pauseDom.textContent}`;
 }
