@@ -53,15 +53,16 @@ stopButton.addEventListener("click", () => {
 });
 
 refreshButton.addEventListener("click", () => {
-    min = 25;
     sec = 0;
 
     sessionMinutes.textContent  = "25";
     breakMinutes.textContent    = "5";
 
     if (pause) {
+        min = 5;
         formatTime(breakMinutes.textContent, minutesDom);
     } else {
+        min = 25;
         formatTime(sessionMinutes.textContent, minutesDom);
     }
 
