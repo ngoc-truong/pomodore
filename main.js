@@ -1,15 +1,33 @@
+// DOM Selectors
 const playButton    = document.querySelector("#play");
 const pauseButton   = document.querySelector("#pause");
 const stopButton    = document.querySelector("#stop");
 const refreshButton = document.querySelector("#refresh");
 
+const decreaseSessionMinutes    = document.querySelector("#session-decrease");
+const sessionMinutes            = document.querySelector("#session-minutes");
+const increaseSessionMinutes    = document.querySelector("#session-increase");
+
+const decreaseBreakMinutes      = document.querySelector("#break-decrease");
+const breakMinutes              = document.querySelector("#break-minutes");
+const increaseBreakMinutes      = document.querySelector("#break-increase");
+
 const minutesDom = document.querySelector("#minutes");
 const secondsDom = document.querySelector("#seconds");
-let sec = secondsDom.textContent;
-let min = minutesDom.textContent;
 
+const pauseDom = document.querySelector("#pause-message");
+
+const sound = document.querySelector("#meditation-bowl");
+
+
+// Global variables
+let sec = 0;
+let min = sessionMinutes.textContent;
+let pause = false;
 let timerId;
 
+
+// Event listeners
 playButton.addEventListener("click", () => {
     clearInterval(timerId);
     timerId = setInterval(countdown, 1000);
@@ -21,21 +39,81 @@ pauseButton.addEventListener("click", () => {
 
 stopButton.addEventListener("click", () => {
     clearInterval(timerId);
-    min = 25;
+
+    if (pause) {
+        min = breakMinutes.textContent;
+    } else {
+        min = sessionMinutes.textContent;
+    }
+
     sec = 0;
-    minutesDom.textContent = `${min}`;
-    secondsDom.textContent = `0${sec}`;
+
+    formatTime(min, minutesDom);
+    formatTime(sec, secondsDom);
 });
 
 refreshButton.addEventListener("click", () => {
-    
+    min = 25;
+    sec = 0;
+
+    sessionMinutes.textContent  = "25";
+    breakMinutes.textContent    = "5";
+
+    if (pause) {
+        formatTime(breakMinutes.textContent, minutesDom);
+    } else {
+        formatTime(sessionMinutes.textContent, minutesDom);
+    }
+
+    secondsDom.textContent = "00";
+});
+
+decreaseSessionMinutes.addEventListener("click", () => {
+    decrease(sessionMinutes);
+
+    if (!pause){
+        setDisplay(minutesDom, sessionMinutes);
+    }
+});
+
+increaseSessionMinutes.addEventListener("click", () => {
+    increase(sessionMinutes);
+
+    if (!pause) {
+        setDisplay(minutesDom, sessionMinutes);
+    }
+});
+
+decreaseBreakMinutes.addEventListener("click", () => {
+    decrease(breakMinutes);
+
+    if(pause){
+        setDisplay(minutesDom, breakMinutes);
+    }
+});
+
+increaseBreakMinutes.addEventListener("click", () => {
+    increase(breakMinutes);
+
+    if(pause){
+        setDisplay(minutesDom, breakMinutes);
+    }
 });
 
 
+// Functions
 function countdown(){
     // Countdown finished
     if (min === 0 && sec === 0){
-        return;
+        sound.play();
+
+        if (pause === false) {
+            min = breakMinutes.textContent;                   
+            pause = true;               
+        } else {
+            min = sessionMinutes.textContent;                  
+            pause = false;
+        }
     }
 
     sec -= 1;
@@ -49,12 +127,44 @@ function countdown(){
         formatTime(min, minutesDom);
     } 
     formatTime(sec, secondsDom);
-}
 
-function formatTime(counter, domElement){
-    if (counter < 10) {
-        domElement.textContent = `0${counter}`;
+    if (pause) {
+        pauseDom.textContent = "Breath";
     } else {
-        domElement.textContent = counter;
+        pauseDom.textContent = "Focus";
     }
 }
+
+function formatTime(num, domElement){
+    if (num < 10) {
+        domElement.textContent = `0${num}`;
+    } else {
+        domElement.textContent = num;
+    }
+}
+
+function decrease(dom){
+    let number = Number(dom.textContent);
+
+    if (number > 1){
+        dom.textContent = number - 1;
+    }
+}
+
+function increase(dom){
+    let number = Number(dom.textContent);
+    dom.textContent = number + 1;
+}
+
+
+function setDisplay(targetDom, settingDom){
+    formatTime(settingDom.textContent, targetDom);
+    min = settingDom.textContent;
+}
+
+/* ToDo
+
+- Add audio if time is up
+- Fix bug: If we are in pause mode and click refresh, the countdown starts at 25mins (and not 5mins)
+- Styling 
+*/

@@ -1,28 +1,41 @@
 :root {
-    --background: #e89d93;
+    --background: #f7f7f7;
     --background-body: #b0e0e6;
     --font: #454547;
     --buttons: #dbdbdd;
     --primary: #eec71a;
+    --watch-face: #525151;
+    --watch-face-gradient: #000000;
+    --watch-font: #be907c;
+    --watch-border: #000000;
+    --watch-border-gradient: #929090;
+    --holding: #575656;
+    --metal: #cacaca;
+    --strap1: #3d1a18;
+    --strap2: #79473f;
+    --strap3: #9b6f69;
+    --strap-top-gradient: #e5bcb8;
+    --strap-bottom: #562820;
+    --strap-bottom-gradient: #1b0d09;
+    --strap-background: #b48a71;
 }
 
 body {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     font-family: 'Josefin Sans', sans-serif;
     color: var(--font);
-    background-color: var(--background-body);
+    background: var(--background);
 }
 
-#container {
-    grid-column: 2 / 3;
-    background-color: var(--background);
-
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;
+h1 {
+    font-size: 5em;
+    margin: 0;
 }
 
+h2 {
+    font-size: 2em;
+}
 button{
     border: none;
     outline: none;
@@ -35,13 +48,23 @@ button:hover {
     filter: brightness(90%);
 }
 
+.left-col {
+    width: 500px;
+    margin: 6em 0em 6em 30em;
+}
+
 #instructions {
-    grid-column: 2 / 3;
+    grid-column: 1 / 2;
 }
 
 #controls {
+    grid-column: 1 / 2;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+}
+
+#controls button {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 #play {
@@ -60,11 +83,153 @@ button:hover {
     grid-column: 4 / 5;
 }
 
+#settings {
+    grid-column: 1 / 2;
+    text-align: center;
+    margin: 3em 0;
+}
+
+#settings p {
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.setting-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.number {
+    grid-column: 2 / 3;
+    font-size: 2em;
+    margin: 0.5em 1em;
+}
+
+.setting-controls button {
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.decrease {
+    grid-column: 1 / 2;
+
+}
+
+.increase {
+    grid-column: 3 / 4 ;
+}
+
+
+/* Watch */
+#watch {
+    margin: 6.3em 8em;
+    position: relative;
+    width: 17em;
+}
+
+#holding, #knob, #strap-top, #strap-bottom, #watch-border {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#holding {
+    width: 9em;
+    height: 18em;
+    position: absolute;
+    border: 18px solid var(--watch-border); 
+    border-color: var(--watch-border) var(--holding);
+    top: 8.2em;
+    left: 3em;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+#strap-background {
+    width: 7.5em;
+    height: 20em;
+    position: absolute;
+    top: 9em;
+    left: 4.73em;
+    border-radius: 20px;
+    background-color: var(--strap-background);
+    z-index: 1;
+    border: 3px solid #8f5f4f;
+}
+
+#knob{
+    position: absolute;
+    left: 16.5em;
+    top: 17.5em;
+    width: 1.2em;
+    height: 2em;
+    background: linear-gradient(to bottom, var(--metal), var(--watch-border));
+    border-radius: 5px;
+}
+
+#strap-top, #strap-bottom {
+    width: 8.7em;
+    height: 10em;
+    position: absolute;
+    left: 4.2em;
+    z-index: 9;
+    border-left: 2px solid #6e3a31;
+    border-right: 2px solid #6e3a31;
+}
+
+#strap-top {
+    border-radius: 13px 15px 8px 6px;
+    background: linear-gradient(to top, var(--strap1), var(--strap2) , var(--strap3) 80%, var(--strap2));
+}
+
+#strap-bottom {
+    top: 27em;
+    border-radius: 6px 8px 12px 15px;
+    background: linear-gradient(to bottom, var(--strap1), var(--strap2) -15%, var(--strap1));
+}
+
+#watch-border {
+    z-index: 10;
+    top: 10em;
+    position: absolute;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    width: 17em;
+    height: 17em;
+    border-radius: 100%;
+    position: relative;
+    background: linear-gradient(45deg, var(--watch-border), var(--watch-border-gradient), var(--watch-border));
+}
+
+#watch-face {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    text-align: center;
+    width: 15em;
+    height: 15em;
+    border-radius: 100%;
+    color: var(--watch-font);
+    border: 2px solid var(--metal);
+    background: radial-gradient(var(--watch-face) 60%, var(--watch-face-gradient));
+}
+
 #display {
     display: grid;
     grid-template-columns: 5fr 1fr 5fr;
-    padding: 1em 0em;
-    font-size: 3em;
+    margin: 4em 0;
+
+}
+
+.time {
+    font-size: 3.3em;
+}
+
+#pause-message {
+    margin: 0.5em auto;
+    grid-column: 1 / 4;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding-left: 10px;
 }
 
 #minutes {
@@ -80,3 +245,4 @@ button:hover {
     grid-column: 3 / 4;
     text-align: left;
 }
+

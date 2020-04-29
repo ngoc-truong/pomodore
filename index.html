@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pantastic Pomodore Productivity</title>
+        <title>Pantastic Pomodore</title>
         <meta charset="utf-8"></meta>
         <link rel="stylesheet" type="text/css" href="main.css">
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet"> 
     </head>
     <body>
-        <div id="instructions">
-            <h1>Ohm shanti.</h1>
-            <p>I'm proud of you that you have decided to be productive. We can do it, my beautiful mademoiselle or monsieur! Here we go, auf geht's!</p>    
-        </div>
-        <div id="container">
+        <div class="left-col">
+            <section id="instructions">
+                <h1>Ohm shanti.</h1>
+                <h2>L'Amore with Pomodore</h2>
+                <p>I'm proud of you that you have decided to be productive. We can do it, my beautiful mademoiselle or monsieur! Here we go!</p>    
+            </section>
+    
             <section id="controls">
                 <button id="play">▶</button>
                 <button id="pause">⏸</button>
@@ -19,13 +21,58 @@
                 <button id="refresh">⟳</button>
             </section>
     
-            <section id="display">
-                <div id="minutes">02</div>
-                <div id="colon">:</div>
-                <div id="seconds">00</div>
+            <section id="settings">
+                <p>Set minutes for sessions: </p>
+    
+                <div class="setting-controls">
+                    <button class="decrease" id="session-decrease">↓</button>
+                    <div class="number" id="session-minutes">25</div>
+                    <button class="increase" id="session-increase">↑</button>
+                </div>
+                
+                <p>Set minutes for breaks:</p>
+                <div class="setting-controls">
+                    <button class="decrease" id="break-decrease">↓</button>
+                    <div class="number" id="break-minutes">5</div>
+                    <button class="increase" id="break-increase">↑</button>
+                </div>
             </section>
-
         </div>
+
+        <div id="watch">
+            <div id="strap-top">
+            </div>
+
+            <div id="holding">
+            </div>
+
+            <div id="strap-background">
+            </div>
+
+            <div id="watch-border">
+                <div id="watch-face">
+                    <section id="display">
+                        <section id="pause-message">Ohm</section>
+
+
+                        <div class="time" id="minutes">25</div>
+                        <div class="time" id="colon">:</div>
+                        <div class="time" id="seconds">00</div>
+        
+                    </section>
+                </div>
+            </div>
+
+            <div id="strap-bottom">
+            </div>
+
+            <div id="knob">
+            </div>
+        </div>
+
+        <audio id="meditation-bowl">
+            <source src="audio/Singing-bowl-sound.mp3" type="audio/mpeg">
+        </audio>
     </body>
 </html>
 
