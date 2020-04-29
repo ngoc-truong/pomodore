@@ -1,6 +1,8 @@
 # Pomodore
 In this project, I built a pomodore timer with HTML, CSS and Javascript. A pomodore timer helps you to stay focused on your task for a chosen period of time. Usually, the timer is set to 25 minutes of focused work, followed by a 5 minute break and can be repeated as long as you wish. 
 
+### [Click here to see app](https://htmlpreview.github.io/?https://github.com/ngoc-truong/pomodore/blob/master/index.html)
+
 ![Screenshot for the pomodore clock](https://raw.githubusercontent.com/ngoc-truong/pomodore/master/images/Screenshot_2020-04-29%20Pantastic%20Pomodore.png)
 
 This project is part of [The Odin Project](https://www.theodinproject.com/courses/web-development-101/lessons/pairing-project),
