@@ -161,10 +161,3 @@ function setDisplay(targetDom, settingDom){
     formatTime(settingDom.textContent, targetDom);
     min = settingDom.textContent;
 }
-
-/* ToDo
-
-- Add audio if time is up
-- Fix bug: If we are in pause mode and click refresh, the countdown starts at 25mins (and not 5mins)
-- Styling 
-*/
